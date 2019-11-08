@@ -1,10 +1,15 @@
 :host {
-  margin: 2px;
+  margin: 10px;
+  padding: 10px;
   border: 1px solid black;
   border-radius: 5px;
-  display: block;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
 
   & img {
-    max-width: 100%;
+    max-width: 200px;
+    max-height: 160px;
   }
 }
