@@ -2,7 +2,7 @@
   <h1>
     Welcome to {{ title }}!
   </h1>
-  <app-product></app-product>
+
   <input type="text" placeholder="Name" [(ngModel)]="name" />
   <button (click)="addName(name)">Add Name</button>
 
@@ -19,9 +19,7 @@
   </ng-template>
 
   <div *ngFor="let product of products">
-    <h3>{{ product.title }}</h3>
-    <img [src]="product.image" alt="Product Image" width="200">
-    <p>{{ product.price }}</p>
+    <app-product [product]="product" (eventAddCart)="productAddCart($event)"></app-product>
   </div>
 </div>
 
