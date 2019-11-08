@@ -23,6 +23,9 @@
     <p>Names array is empty</p>
   </ng-template>
 
+  <input type="number" placeholder="Number" [(ngModel)]="power" />
+  <strong>{{ power | exponential }}</strong>
+
   <div class="product-grid">
     <app-product
       *ngFor="let product of products"

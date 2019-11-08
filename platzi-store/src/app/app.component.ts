@@ -8,6 +8,7 @@ import { IProduct } from './product.model';
 })
 export class AppComponent {
   title = 'platzi-store';
+  power = 10;
   names = [];
   name: string;
   products: IProduct[] = [
@@ -52,7 +53,7 @@ export class AppComponent {
       title: 'Stickers',
       price: 80000,
       description: 'bla bla bla bla bla'
-    },
+    }
   ];
 
   addName(name: string) {
