@@ -1,7 +1,5 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
-import { ContactComponent } from './components/contact/components/contact/contact.component';
-import { DemoComponent } from './components/demo/demo.component';
 import { LayoutComponent } from './components/layout/layout.component';
 
 const routes: Routes = [
@@ -25,13 +23,12 @@ const routes: Routes = [
       {
         path: 'contact',
         loadChildren: () => import('./components/contact/contact.module').then(m => m.ContactModule)
+      },
+      {
+        path: 'demo',
+        loadChildren: () => import('./components/demo/demo.module').then(m => m.DemoModule)
       }
     ]
-  },
-
-  {
-    path: 'demo',
-    component: DemoComponent
   },
   {
     path: '**',
