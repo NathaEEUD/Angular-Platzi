@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
-import { ContactComponent } from './components/contact/contact.component';
+import { ContactComponent } from './components/contact/components/contact/contact.component';
 import { DemoComponent } from './components/demo/demo.component';
 import { LayoutComponent } from './components/layout/layout.component';
 
@@ -24,7 +24,7 @@ const routes: Routes = [
       },
       {
         path: 'contact',
-        component: ContactComponent
+        loadChildren: () => import('./components/contact/contact.module').then(m => m.ContactModule)
       }
     ]
   },
