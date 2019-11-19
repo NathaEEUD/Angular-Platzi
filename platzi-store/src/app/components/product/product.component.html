@@ -3,3 +3,4 @@
 <strong>{{ product.price | currency }}</strong>
 <p>{{ product.description | slice: 0:10 }}</p>
 <button (click)="addCart()">Add to Cart</button>
+<a [routerLink]="['/products', product.id]">Ver detalle</a>
