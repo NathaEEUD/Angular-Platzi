@@ -1,62 +1,21 @@
 import { Injectable } from '@angular/core';
 import { IProduct } from '../models/product.model';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductsService {
-  products: IProduct[] = [
-    {
-      id: '1',
-      image: 'assets/images/camiseta.png',
-      title: 'Camiseta',
-      price: 80000,
-      description: 'bla bla bla bla bla'
-    },
-    {
-      id: '2',
-      image: 'assets/images/hoodie.png',
-      title: 'Hoodie',
-      price: 80000,
-      description: 'bla bla bla bla bla'
-    },
-    {
-      id: '3',
-      image: 'assets/images/mug.png',
-      title: 'Mug',
-      price: 80000,
-      description: 'bla bla bla bla bla'
-    },
-    {
-      id: '4',
-      image: 'assets/images/pin.png',
-      title: 'Pin',
-      price: 80000,
-      description: 'bla bla bla bla bla'
-    },
-    {
-      id: '5',
-      image: 'assets/images/stickers1.png',
-      title: 'Stickers',
-      price: 80000,
-      description: 'bla bla bla bla bla'
-    },
-    {
-      id: '6',
-      image: 'assets/images/stickers2.png',
-      title: 'Stickers',
-      price: 80000,
-      description: 'bla bla bla bla bla'
-    }
-  ];
+  private URL = 'http://platzi-store.herokuapp.com/products/';
+  products: IProduct[];
 
-  constructor() {}
+  constructor(private http: HttpClient) {}
 
   getAllProducts() {
-    return this.products;
+    return this.http.get<IProduct[]>(this.URL);
   }
 
   getProduct(id: string) {
-    return this.products.find(product => product.id === id);
+    return this.http.get<IProduct>(this.URL + id);
   }
 }
