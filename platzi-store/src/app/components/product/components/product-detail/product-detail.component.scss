@@ -1,0 +1,9 @@
+@import '../../../../../assets/styles/mixins.scss';
+
+.product-detail__container {
+  @include flex-container;
+
+  & img {
+    max-width: 500px;
+  }
+}
