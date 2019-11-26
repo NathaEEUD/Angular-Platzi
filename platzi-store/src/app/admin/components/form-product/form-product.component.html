@@ -22,6 +22,12 @@
         <div class="col-xs">
           <mat-form-field>
             <input placeholder="Price" formControlName="price" matInput type="number" />
+            <mat-error *ngIf="priceField.hasError('price_invalid')">
+              Price is <strong>not valid</strong>
+            </mat-error>
+            <mat-error *ngIf="priceField.hasError('required')">
+              Price is <strong>required</strong>
+            </mat-error>
           </mat-form-field>
         </div>
       </div>
@@ -34,7 +40,7 @@
       </div>
     </mat-card-content>
     <mat-card-actions>
-      <button mat-raised-button type="submit">Guardar</button>
+      <button mat-raised-button type="submit" [disabled]="form.invalid">Guardar</button>
     </mat-card-actions>
   </mat-card>
 </form>
