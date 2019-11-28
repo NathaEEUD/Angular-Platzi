@@ -7,10 +7,23 @@ import { HighlightDirective } from './directives/highlight/highlight.directive';
 import { RouterModule } from '@angular/router';
 import { MaterialModule } from '../material/material.module';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ArrayUniqueItemsPipe } from './pipes/array-unique-items/array-unique-items.pipe';
 
 @NgModule({
-  declarations: [HeaderComponent, FooterComponent, ExponentialPipe, HighlightDirective],
+  declarations: [
+    HeaderComponent,
+    FooterComponent,
+    ExponentialPipe,
+    HighlightDirective,
+    ArrayUniqueItemsPipe
+  ],
   imports: [CommonModule, RouterModule, MaterialModule, ReactiveFormsModule],
-  exports: [HeaderComponent, FooterComponent, ExponentialPipe, HighlightDirective]
+  exports: [
+    HeaderComponent,
+    FooterComponent,
+    ExponentialPipe,
+    HighlightDirective,
+    ArrayUniqueItemsPipe
+  ]
 })
 export class SharedModule {}
