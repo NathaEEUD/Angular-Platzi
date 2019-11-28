@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
+import { Routes, RouterModule } from '@angular/router';
 import { LayoutComponent } from './components/layout/layout.component';
+import { SelectivePreloadService } from './core/services/selective-preload/selective-preload.service';
 
 const routes: Routes = [
   {
@@ -14,11 +15,14 @@ const routes: Routes = [
       },
       {
         path: 'home',
-        loadChildren: () => import('./components/home/home.module').then(m => m.HomeModule)
+        loadChildren: () => import('./components/home/home.module').then(m => m.HomeModule),
+        data: { preload: true }
       },
       {
         path: 'products',
-        loadChildren: () => import('./components/product/product.module').then(m => m.ProductModule)
+        loadChildren: () =>
+          import('./components/product/product.module').then(m => m.ProductModule),
+        data: { preload: true }
       },
       {
         path: 'contact',
@@ -48,7 +52,7 @@ const routes: Routes = [
 @NgModule({
   imports: [
     RouterModule.forRoot(routes, {
-      preloadingStrategy: PreloadAllModules
+      preloadingStrategy: SelectivePreloadService
     })
   ],
   exports: [RouterModule]
