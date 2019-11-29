@@ -8,6 +8,8 @@ import { LayoutComponent } from './components/layout/layout.component';
 import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
 import { QuicklinkModule } from 'ngx-quicklink';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [AppComponent, LayoutComponent],
@@ -18,7 +20,8 @@ import { QuicklinkModule } from 'ngx-quicklink';
     CoreModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    QuicklinkModule
+    QuicklinkModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [],
   bootstrap: [AppComponent]
