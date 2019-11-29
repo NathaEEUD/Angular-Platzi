@@ -8,6 +8,7 @@ import { RouterModule } from '@angular/router';
 import { MaterialModule } from '../material/material.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ArrayUniqueItemsPipe } from './pipes/array-unique-items/array-unique-items.pipe';
+import { QuicklinkModule } from 'ngx-quicklink';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,7 @@ import { ArrayUniqueItemsPipe } from './pipes/array-unique-items/array-unique-it
     HighlightDirective,
     ArrayUniqueItemsPipe
   ],
-  imports: [CommonModule, RouterModule, MaterialModule, ReactiveFormsModule],
+  imports: [CommonModule, RouterModule, MaterialModule, ReactiveFormsModule, QuicklinkModule],
   exports: [
     HeaderComponent,
     FooterComponent,
