@@ -1,4 +1,5 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, PLATFORM_ID, Inject } from '@angular/core';
+import { isPlatformBrowser, isPlatformServer } from '@angular/common';
 import Swiper from 'swiper';
 
 @Component({
@@ -14,16 +15,21 @@ export class BannerComponent implements OnInit, AfterViewInit {
     'assets/images/banner-3.jpg'
   ];
 
-  constructor() {}
+  constructor(
+    // tslint:disable-next-line: ban-types
+    @Inject(PLATFORM_ID) private platformId: Object
+  ) {}
 
   ngOnInit() {}
 
   ngAfterViewInit() {
-    this.mySwiper = new Swiper('.swiper-container', {
-      navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev'
-      }
-    });
+    if (isPlatformBrowser(this.platformId)) {
+      this.mySwiper = new Swiper('.swiper-container', {
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev'
+        }
+      });
+    }
   }
 }
