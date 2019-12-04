@@ -1,13 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { IProduct } from 'src/app/core/models/product.model';
-import { ProductsService } from 'src/app/core/services/products/products.service';
+import { IProduct } from '@core/models/product.model';
+import { ProductsService } from '@core/services/products/products.service';
 
 @Component({
   selector: 'app-products',
-  templateUrl: './products.component.html',
-  styleUrls: ['./products.component.scss']
+  templateUrl: './products.container.html',
+  styleUrls: ['./products.container.scss']
 })
-export class ProductsComponent implements OnInit {
+// tslint:disable-next-line: component-class-suffix
+export class ProductsContainer implements OnInit {
   products: IProduct[];
 
   constructor(private productsService: ProductsService) {}
