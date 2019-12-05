@@ -53,4 +53,10 @@ export class ProductDetailComponent implements OnInit {
       console.log('delete product::::', product);
     });
   }
+
+  getFile() {
+    this.productsService.getFile().subscribe(content => {
+      console.log('content file::::', content);
+    });
+  }
 }

@@ -3,7 +3,7 @@ import { IProduct } from '../../models/product.model';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { environment } from 'environments/environment';
 import { Observable, throwError } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import { catchError, retry } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +14,9 @@ export class ProductsService {
   constructor(private http: HttpClient) {}
 
   getAllProducts(): Observable<IProduct[]> {
-    return this.http.get<IProduct[]>(environment.url_api).pipe(catchError(this.handleError));
+    return this.http
+      .get<IProduct[]>(environment.url_api)
+      .pipe(retry(1), catchError(this.handleError));
   }
 
   getProduct(id: string) {
@@ -33,6 +35,10 @@ export class ProductsService {
 
   deleteProduct(id: string) {
     return this.http.delete<IProduct>(environment.url_api + id).pipe(catchError(this.handleError));
+  }
+
+  getFile() {
+    return this.http.get('assets/files/test.txt', { responseType: 'text' });
   }
 
   private handleError(error: HttpErrorResponse) {
