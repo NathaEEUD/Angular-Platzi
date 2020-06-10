@@ -14,12 +14,12 @@ const routes: Routes = [
     component: NavComponent,
     children: [
       {
-        path: '',
-        component: DashboardComponent
-      },
-      {
         path: 'create',
         component: ProductFormComponent
+      },
+      {
+        path: '',
+        component: DashboardComponent
       },
       {
         path: 'table',

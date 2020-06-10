@@ -23,7 +23,8 @@ export class AdminGuard implements CanActivate {
     console.log('Auth Guard Enter');
     return this.authService.hasUser().pipe(
       tap((user) => console.log('user -> ', user)),
-      map((user) => (!user ? this.router.parseUrl('/') : true))
+      map((user) => (user === null ? false : true)),
+      tap((hasUser) => hasUser ? hasUser : this.router.navigate(['/auth/login']))
     );
   }
 }
